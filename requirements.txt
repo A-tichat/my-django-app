@@ -116,7 +116,7 @@ pydantic==1.8.2
 pydub==0.25.1
 pygame==2.1.2
 Pygments==2.10.0
-pylas==0.4.4
+pylas==0.4.3
 pylast==4.2.0
 pyparsing==3.0.4
 pypiwin32==223
