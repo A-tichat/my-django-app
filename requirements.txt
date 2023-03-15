@@ -152,7 +152,7 @@ Send2Trash==1.8.0
 six==1.16.0
 sniffio==1.2.0
 sortedcontainers==2.4.0
-soundfile==0.10.3.post1
+soundfile==0.12.1
 soupsieve==2.2.1
 sqlparse==0.4.2
 stack-data==0.5.0
