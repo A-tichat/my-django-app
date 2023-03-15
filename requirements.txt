@@ -1,5 +1,5 @@
 absl-py==0.13.0
-aiosmtplib==1.2.0
+aiosmtplib==1.0.0
 anyio==3.3.4
 appdirs==1.4.4
 argon2-cffi==20.1.0
