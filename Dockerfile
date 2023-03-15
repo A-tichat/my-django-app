@@ -1,15 +1,25 @@
-FROM python:3.11
+FROM python:3.9-alpine
 
-ENV PYTHONUNBUFFERED=1
+ADD requirements.txt /app/requirements.txt
 
-WORKDIR /code
+RUN set -ex \
+    && apk add --no-cache --virtual .build-deps postgresql-dev build-base \
+    && python -m venv /env \
+    && /env/bin/pip install --upgrade pip wheel setuptools 
+RUN /env/bin/pip install --no-cache-dir -r /app/requirements.txt \
+    && runDeps="$(scanelf --needed --nobanner --recursive /env \
+        | awk '{ gsub(/,/, "\nso:", $2); print "so:" $2 }' \
+        | sort -u \
+        | xargs -r apk info --installed \
+        | sort -u)" \
+    && apk add --virtual rundeps $runDeps \
+    && apk del .build-deps
 
-COPY requirements.txt .
+ADD . /app
+WORKDIR /app
 
-RUN pip install -r requirements.txt
-
-COPY . .
+ENV VIRTUAL_ENV /env
+ENV PATH /env/bin:$PATH
 
 EXPOSE 8000
-
-CMD ["python", "manage.py", "runserver"]
+CMD ["gunicorn", "--bind=:8000", "--workers=3", "--timeout=120",  "--log-file=-", "musicgenreapp.wsgi"]
