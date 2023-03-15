@@ -65,7 +65,7 @@ jsonpointer==2.1
 jsonschema==4.1.0
 jupyter==1.0.0
 jupyter-client==6.1.12
-jupyter-core==4.9.1
+jupyter-core==4.12
 jupyter-server==1.10.2
 jupyter-server-mathjax==0.2.3
 jupyterlab==3.3.0
