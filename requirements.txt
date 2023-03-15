@@ -55,7 +55,7 @@ ipykernel==6.4.1
 ipython==7.29.0
 ipython-genutils==0.2.0
 ipywidgets==7.6.5
-isoduration==0.3.0
+isoduration==20.11.0
 itsdangerous==2.1.0
 jedi==0.18.0
 Jinja2==3.0.2
